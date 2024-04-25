@@ -8,4 +8,5 @@ Current functionality updates list:
  - Consider edge cases of multiple people holding multiple units of different costs, although I am not sure how the shop functions if there are no more 2 costs and it rolls a 2 cost in that slot\
  - Calculate a probability using gold
  - Dynamically update based on user input for level (shop odds change per level)
+ - Rewrite to add in simulation number
    
