@@ -56,14 +56,20 @@ def start_reroll(target):
 
     return reroll, bought_champions, total_champions
 
-target = input("Enter the champion you want to collect 9 copies of: ").lower()
+target = input("Enter the 3-cost champion you want to 3-star: ").lower()
 target = check_spelling(target)
-sim_count = 5
+total_gold = 0
+sim_count = 10
+original_sim_count = sim_count
 
-reroll, bought_champions, total_champions = start_reroll(target)
+while sim_count > 0:
+    reroll, bought_champions, total_champions = start_reroll(target)
+    total_gold += reroll
+    sim_count -= 1
 
 
-print(f"It would cost you on average {reroll * 2} gold to hit a 3-star {target}")
-print("Total 3-cost champions shown in shops:")
-for champion, count in bought_champions.items():
-    print(f"{champion} - {count}")
+
+print(f"From a sim of {original_sim_count}, it would cost you on average {int((total_gold * 2) / original_sim_count)} gold to hit a 3-star {target}")
+# print("Total 3-cost champions shown in shops:")
+# for champion, count in bought_champions.items():
+#     print(f"{champion} - {count}")
