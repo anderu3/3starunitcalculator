@@ -21,6 +21,8 @@ def check_spelling(target):
         return "soraka"
     elif target == "trist":
         return "tristana"
+    else:
+        return target
 
 def start_reroll(target):
     champions_pool, champion_bag_pool, total_champions = initialize_3cost_pool()
@@ -56,8 +58,10 @@ def start_reroll(target):
 
 target = input("Enter the champion you want to collect 9 copies of: ").lower()
 target = check_spelling(target)
+sim_count = 5
 
 reroll, bought_champions, total_champions = start_reroll(target)
+
 
 print(f"It would cost you on average {reroll * 2} gold to hit a 3-star {target}")
 print("Total 3-cost champions shown in shops:")
