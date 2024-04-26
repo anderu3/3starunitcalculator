@@ -59,7 +59,7 @@ def start_reroll(target):
 target = input("Enter the 3-cost champion you want to 3-star: ").lower()
 target = check_spelling(target)
 total_gold = 0
-sim_count = 10
+sim_count = 10000
 original_sim_count = sim_count
 
 while sim_count > 0:
