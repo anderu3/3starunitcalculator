@@ -24,11 +24,12 @@ def check_spelling(target):
     else:
         return target
 
-def start_reroll(target):
+def start_reroll(target, taken_champs, taken_3costs):
     champions_pool, champion_bag_pool, total_champions = initialize_3cost_pool()
     reroll = 0
     bought_champions = {champion: 0 for champion in champions_pool}
-
+    champion_bag_pool[target]  = champion_bag_pool[target] - taken_champs
+    total_champions = total_champions - taken_3costs
     while bought_champions[target] < 9:
         reroll += 1
         # Simulate 5 champ cards per reroll
@@ -58,12 +59,14 @@ def start_reroll(target):
 
 target = input("Enter the 3-cost champion you want to 3-star: ").lower()
 target = check_spelling(target)
+taken_champs = int(input("How many of these champs are taken?: "))
+taken_3costs = int(input("How many of 3-costs are out of the pool?: "))
 total_gold = 0
 sim_count = 10000
 original_sim_count = sim_count
 
 while sim_count > 0:
-    reroll, bought_champions, total_champions = start_reroll(target)
+    reroll, bought_champions, total_champions = start_reroll(target, taken_champs, taken_3costs)
     total_gold += reroll
     sim_count -= 1
 
